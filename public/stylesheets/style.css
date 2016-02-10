@@ -1,0 +1,125 @@
+* {padding: 0; margin: 0; box-sizing: border-box}
+
+body {
+  font-size: 16px;
+  font-family: Helvetica, sans-serif;
+  background-color: grey;
+}
+h1 {
+	background-color: rgb(50,50,50);
+	text-align: center;
+	color: red;
+	padding: 2rem;
+	font-size: 3rem;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+	color: red;
+}
+footer {
+	padding: 3rem;
+	background-color: rgb(50,50,50);
+	text-align: center;
+	color: white;
+	font-size: 2rem;
+}
+.section_back {
+	background-image: url("../images/stars.jpg");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	padding: 3rem;
+	margin: 0 auto;
+}
+.code_back {
+	background-image: url("../images/matrix.jpg");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	padding: 3rem;
+	margin: 0 auto;
+}
+.form {
+	background-color: rgba(50,50,50,.85);
+	margin: 0 auto;
+	width: 50%;
+	padding: 2rem;
+	border-radius: 5px;
+}
+.form h2 {
+	text-align: center;
+	padding: 1rem;
+	background-color: lightgrey;
+	width: 80%;
+	margin: 0 auto;
+	font-size: 2rem;
+	border-radius: 5px;
+}
+.form input, #register_btn {
+	padding: .5rem 1rem;
+	font-size: 1.75rem;
+	display: block;
+	margin: 2rem auto 0;
+	border-radius: 5px;
+	text-align: center;
+}
+#user_form div {
+	margin: 0 auto;
+	text-align: center;
+	
+}
+#user_form input[type='submit'] {
+	display: inline;
+	text-align: center;
+}
+#cancel_user_btn {
+	margin-left: 1rem;
+}
+div#movie_results_box {
+	/*display: none;*/
+	background-color: rgba(50,50,50, 0.85);
+	margin: 1rem auto 0;
+	width: 50%;
+	padding: 2rem;
+	border-radius: 5px;
+}
+div#movie_results_box h2 {
+	text-align: center;
+	padding: 1rem;
+	background-color: lightgrey;
+	width: 80%;
+	margin: 0 auto;
+	font-size: 2rem;
+	border-radius: 5px;
+}
+div#movie_results_box div {
+	text-align: center;
+}
+div#movie_results_box div + div {
+	margin-top: 1rem;
+}
+div#movie_results_box a {
+	text-decoration: none;
+	color: yellow;
+	font-size: 1.5rem;
+}
+div#movie_results_box a:hover {
+	text-decoration: none;
+	color: red;
+}
+
+p#error_msg {
+	visibility: hidden;
+	color: red;
+	margin: 1rem 0 0;
+}
+
+.wrapper {
+	width: 1200px;
+}
