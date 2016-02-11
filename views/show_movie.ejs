@@ -1,16 +1,15 @@
 <% include ./partials/header %>
 	<section class="code_back">
-		<div>
-			<h2 id="movie_title"></h2>
-			<form id="favs_form">
-				<input type="checkbox" id="favs_box" name="favs" value=0><p>Mark as favorite</p>
-				<input type="submit" id="favs_submit" name="favs_submit" value="Submit">
-			</form>
-		</div>
-		<div id="reviews_container">
+		<div id="movie_details_head">
+			<h2 id="movie_title"><%= title + " - " + rating %></h2>
+			<h3 id="opening_date"><%= opened %></h3>
 			<ul id="reviews_list">
-				<li><%= 'status' %></li>	
+				<li><%= 'text' %></li>	
 			</ul>
 		</div>
+		<form id="favs_form">
+			<input type="checkbox" id="favs_box" name="favs" value=0><p>Mark as favorite</p>
+			<input type="submit" id="favs_submit" name="favs_submit" value="Submit">
+		</form>
 	</section>
 <% include ./partials/footer %>

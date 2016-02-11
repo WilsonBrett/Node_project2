@@ -23,9 +23,13 @@ router.get('/movies/:id', function(req, res, next) {
 	}, function(error, response, body) {
 		if (error) throw error;
 		console.log(response.statusCode);
-		console.log(body);
-		//res.send('hi');
-		res.render('show_movie', {'status': body.status});
+		var movie = JSON.parse(body);
+		console.log(movie);
+		res.render('show_movie', { title: movie.results[0].display_title,
+								   rating: movie.results[0].mpaa_rating,
+								   opened: movie.results[0].opening_date
+		});
+		//res.render('show_movie', {title: movie.results[0].display_title});
 	});
 });
 		
