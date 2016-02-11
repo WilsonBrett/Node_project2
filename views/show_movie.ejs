@@ -1,15 +1,14 @@
 <% include ./partials/header %>
 	<section class="code_back">
-		<div id="movie_details_head">
-			<h2 id="movie_title"><%= title + " - " + rating %></h2>
-			<h3 id="opening_date"><%= opened %></h3>
-			<ul id="reviews_list">
-				<li><%= 'text' %></li>	
-			</ul>
+		<div id="movie_details_head" class="wrapper">
+			<div class="wrapper">
+				<h2 id="movie_title"><%= title + ' - ' + rating %></h2>
+				<p>Released<%= ' ' + opened %></p>
+				<p class="ital"><%= headline %></p>
+				<p class="ital"><%= summary + ' - ' + hl_auth %></p>
+				<p class="ital"><%= capsule %></p>
+				<p><%= copyright %></p>
+			</div>
 		</div>
-		<form id="favs_form">
-			<input type="checkbox" id="favs_box" name="favs" value=0><p>Mark as favorite</p>
-			<input type="submit" id="favs_submit" name="favs_submit" value="Submit">
-		</form>
 	</section>
 <% include ./partials/footer %>

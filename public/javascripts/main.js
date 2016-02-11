@@ -20,7 +20,6 @@ $(function() {
 			err.css('visibility','hidden');
 			keyword = encodeURIComponent(keyword);
 			keyword = "'" + keyword + "'"; //need double quotes to avoid nyt OR query
-			alert(keyword);
 			var rootURL = 'http://api.nytimes.com/svc/movies/v2/reviews/search';
 			
 			//ajax call to build list of movie titles
@@ -44,13 +43,4 @@ $(function() {
 			err.css('visibility','visible');
 		}
 	});
-
-	$('#reviews_list').slide();
-		//2nd api call for the movies show route
-		//data: {"nyt_movie_id": keyword, "api-key": api_key}
-		//results will need to be links to the movie you want which will populate in the show action of the movie resource
-			//and make a second api call to the ny times to get the links of the reviews which will populate in a div on that page
-		//the id's of the anchor tags will be the id's of the movies returned from nyt so that they can be used in the second
-			//ajax request
-		//set the display of the div to block and apply the jquery slide method as a feature possibly after results are back
 });	
