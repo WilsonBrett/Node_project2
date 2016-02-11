@@ -14,6 +14,9 @@
     "kerberos": "0.0.18",
     "mongoose": "^4.4.2",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0"
+    "request": "^2.69.0",
+    "require": "^2.4.20",
+    "serve-favicon": "~2.3.0",
+    "sync-request": "^3.0.0"
   }
 }
