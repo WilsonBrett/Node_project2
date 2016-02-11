@@ -94,7 +94,7 @@ div#movie_results_box h2 {
 	padding: 1rem;
 	background-color: lightgrey;
 	width: 80%;
-	margin: 0 auto;
+	margin: 0 auto 1.5rem;
 	font-size: 2rem;
 	border-radius: 5px;
 }
