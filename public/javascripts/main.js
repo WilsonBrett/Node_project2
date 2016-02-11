@@ -12,14 +12,15 @@ $(function() {
 	//movie search page functions
 	$('#movie_search_frm').submit(function(event) {
 		event.preventDefault();
-		var keyword = encodeURIComponent($('#keyword_box').val());
+		var keyword = $('#keyword_box').val();
 		var err = $('#error_msg');
 		var movie_container = $('#movie_results_box');
 
 		if(!(keyword===null) && !(keyword===" ") && !(keyword==="")) {
 			err.css('visibility','hidden');
-			//alert(keyword + ' has a value. make ajax request');
-
+			keyword = encodeURIComponent(keyword);
+			keyword = "'" + keyword + "'"; //need double quotes to avoid nyt OR query
+			alert(keyword);
 			var rootURL = 'http://api.nytimes.com/svc/movies/v2/reviews/search';
 			
 			//ajax call to build list of movie titles
@@ -44,6 +45,7 @@ $(function() {
 		}
 	});
 
+	$('#reviews_list').slide();
 		//2nd api call for the movies show route
 		//data: {"nyt_movie_id": keyword, "api-key": api_key}
 		//results will need to be links to the movie you want which will populate in the show action of the movie resource

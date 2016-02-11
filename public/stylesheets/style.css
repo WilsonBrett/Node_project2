@@ -124,17 +124,30 @@ section div h2#movie_title {
 	text-align: center;
 	padding: 1rem;
 	background-color: lightgrey;
-	width: 80%;
-	margin: 0 auto 1.5rem;
+	min-width: 50%;
+	margin: 0 auto;
 	font-size: 2rem;
 	border-radius: 5px;
 	display: inline-block;
+}
+h3#opening_date {
+	margin: 1rem auto;
+	background-color: rgba(50,50,50,.85);
+	color: white;
+	width: 30%;
+	padding: 1rem;
+	font-size: 1.75rem;
+	border-radius: 5px;
+	
 }
 #favs_form {
 	background-color: rgba(50,50,50,.85);
 	display: inline-block;
 	padding: 2rem;
 	border-radius: 5px;
+}
+div#movie_details_head {
+	text-align: center;
 }
 ul li {
 	color: white;
