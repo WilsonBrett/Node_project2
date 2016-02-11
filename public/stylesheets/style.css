@@ -94,7 +94,7 @@ div#movie_results_box h2 {
 	padding: 1rem;
 	background-color: lightgrey;
 	width: 80%;
-	margin: 0 auto;
+	margin: 0 auto 1.5rem;
 	font-size: 2rem;
 	border-radius: 5px;
 }
@@ -119,7 +119,26 @@ p#error_msg {
 	color: red;
 	margin: 1rem 0 0;
 }
-
+/*show movie ejs css*/
+section div h2#movie_title {
+	text-align: center;
+	padding: 1rem;
+	background-color: lightgrey;
+	width: 80%;
+	margin: 0 auto 1.5rem;
+	font-size: 2rem;
+	border-radius: 5px;
+	display: inline-block;
+}
+#favs_form {
+	background-color: rgba(50,50,50,.85);
+	display: inline-block;
+	padding: 2rem;
+	border-radius: 5px;
+}
+ul li {
+	color: white;
+}
 .wrapper {
 	width: 1200px;
 }
