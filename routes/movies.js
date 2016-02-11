@@ -24,12 +24,18 @@ router.get('/movies/:id', function(req, res, next) {
 		if (error) throw error;
 		console.log(response.statusCode);
 		var movie = JSON.parse(body);
-		console.log(movie);
+
+		console.log('movie:' + movie);
 		res.render('show_movie', { title: movie.results[0].display_title,
 								   rating: movie.results[0].mpaa_rating,
-								   opened: movie.results[0].opening_date
+								   opened: movie.results[0].opening_date,
+								   hl_auth: movie.results[0].byline,
+								   headline: movie.results[0].headline,
+								   capsule: movie.results[0].capsule_review,
+								   summary: movie.results[0].summary_short,
+								   copyright: movie.copyright
+								   
 		});
-		//res.render('show_movie', {title: movie.results[0].display_title});
 	});
 });
 		

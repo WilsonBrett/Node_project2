@@ -5,29 +5,46 @@ body {
   font-family: Helvetica, sans-serif;
   background-color: grey;
 }
-h1 {
+header {
 	background-color: rgb(50,50,50);
 	text-align: center;
+	padding: 2rem 2rem 0;
+	font-variant: small-caps;
+}
+h1 {
 	color: red;
-	padding: 2rem;
 	font-size: 3rem;
 }
-
+nav {
+	background-color: rgb(50,50,50);
+	text-align: center;
+	margin: 0 auto;
+}
 a {
-  color: blue;
-  text-decoration: none;
+	text-decoration: none;
+}
+nav a {
+	color: yellow;
+	padding: .5rem;
+	font-size: 1.2rem;
+	display: inline-block;
+}
+nav a:hover {
+	background-color: red;
+}
+nav a + a {
+	margin-left: 2rem;
 }
 
-a:hover {
-	text-decoration: none;
-	color: red;
-}
 footer {
 	padding: 3rem;
 	background-color: rgb(50,50,50);
 	text-align: center;
 	color: white;
-	font-size: 2rem;
+	font-size: 1.5rem;
+}
+section {
+	height: 100%;
 }
 .section_back {
 	background-image: url("../images/stars.jpg");
@@ -82,7 +99,6 @@ footer {
 	margin-left: 1rem;
 }
 div#movie_results_box {
-	/*display: none;*/
 	background-color: rgba(50,50,50, 0.85);
 	margin: 1rem auto 0;
 	width: 50%;
@@ -130,28 +146,32 @@ section div h2#movie_title {
 	border-radius: 5px;
 	display: inline-block;
 }
-h3#opening_date {
-	margin: 1rem auto;
-	background-color: rgba(50,50,50,.85);
-	color: white;
-	width: 30%;
-	padding: 1rem;
-	font-size: 1.75rem;
-	border-radius: 5px;
-	
-}
-#favs_form {
-	background-color: rgba(50,50,50,.85);
-	display: inline-block;
-	padding: 2rem;
-	border-radius: 5px;
-}
 div#movie_details_head {
 	text-align: center;
+	background-color: rgba(50,50,50,.9);
+	border-radius: 5px;
+	padding: 2rem;
+	margin: 0 auto;
 }
-ul li {
+
+div#movie_details_head p {
 	color: white;
+	font-weight: 300;
+	font-size: larger;
+	margin-top: 1rem;
+}
+div#movie_details_head p.ital {
+	font-style: italic;
 }
 .wrapper {
-	width: 1200px;
+	max-width: 1200px;
+	width: 80%;
+	margin: 0 auto;
+}
+.clearfix:after {
+	content: ".";
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
 }
