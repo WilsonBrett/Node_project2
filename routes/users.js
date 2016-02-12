@@ -2,10 +2,6 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user.js');
 
-router.get('/users', function(req, res, next) {
-  res.render('users');
-});
-
 //3
 router.get('/users/new', function(req, res, next) {
 	res.render('new_user', {msg: null});
@@ -43,7 +39,7 @@ router.post('/users/new', function(req, res, next) {
 					res.render('movies', {email: new_email});
 				});
 			} else if(result.email === new_email) {
-				res.render('new_user', {msg: 'You already have an email on file. Click Cancel.'});
+				res.render('new_user', {msg: 'Email already on file. Click Cancel.'});
 			}
 
 		});

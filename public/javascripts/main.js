@@ -2,13 +2,6 @@ $(function() {
     //alert("Hello World");
 	var api_key = '056315a59749a59d691a6476f262a589:3:74337495';
 
-	$("#login_form").submit(function(evt){
-		
-		evt.preventDefault();
-		
-		//alert('default prevented');
-	});
-
 	//movie search page functions
 	$('#movie_search_frm').submit(function(event) {
 		event.preventDefault();

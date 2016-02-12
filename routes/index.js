@@ -4,7 +4,7 @@ var User = require('../models/user.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  res.render('index', {msg: null});
 });
 
 module.exports = router;
