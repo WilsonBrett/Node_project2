@@ -35,7 +35,12 @@ nav a:hover {
 nav a + a {
 	margin-left: 2rem;
 }
-
+.notes {
+	margin-top: 2rem;
+	color: white;
+	text-align: center;
+	font-size: 1.5rem;
+}	
 footer {
 	padding: 3rem;
 	background-color: rgb(50,50,50);
@@ -89,14 +94,21 @@ section {
 #user_form div {
 	margin: 0 auto;
 	text-align: center;
-	
 }
 #user_form input[type='submit'] {
 	display: inline;
-	text-align: center;
 }
-#cancel_user_btn {
-	margin-left: 1rem;
+a#cancel_reg {
+	padding: .5rem 1rem;
+	font-size: 1.75rem;
+	display: inline;
+	margin: 2rem;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+}
+a#cancel_reg:hover {
+	color: red;
 }
 div#movie_results_box {
 	background-color: rgba(50,50,50, 0.85);
@@ -129,12 +141,6 @@ div#movie_results_box a:hover {
 	text-decoration: none;
 	color: red;
 }
-
-p#error_msg {
-	visibility: hidden;
-	color: red;
-	margin: 1rem 0 0;
-}
 /*show movie ejs css*/
 section div h2#movie_title {
 	text-align: center;
@@ -153,7 +159,6 @@ div#movie_details_head {
 	padding: 2rem;
 	margin: 0 auto;
 }
-
 div#movie_details_head p {
 	color: white;
 	font-weight: 300;
@@ -163,6 +168,7 @@ div#movie_details_head p {
 div#movie_details_head p.ital {
 	font-style: italic;
 }
+
 .wrapper {
 	max-width: 1200px;
 	width: 80%;

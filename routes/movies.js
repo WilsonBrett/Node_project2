@@ -6,13 +6,13 @@ var User = require('../models/user.js');
 //5)
 router.get('/movies', function(req, res, next) {
   
-  res.render('movies');
+  res.render('movies', {email: null});
 });
 
 //6)
 router.get('/movies/:id', function(req, res, next) {
 	var id = req.params.id;
-	var api_key = '056315a59749a59d691a6476f262a589:3:74337495';
+	var api_key = process.env.NYT_API_KEY; //'056315a59749a59d691a6476f262a589:3:74337495';
 	var nyt_uri = 'http://api.nytimes.com/svc/movies/v2/reviews/search';
 
 	request({
