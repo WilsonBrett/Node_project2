@@ -13,7 +13,7 @@ $(function() {
 			err.css('visibility','hidden');
 			keyword = encodeURIComponent(keyword);
 			keyword = "'" + keyword + "'"; //need double quotes to avoid nyt OR query
-			var rootURL = 'http://api.nytimes.com/svc/movies/v2/reviews/search';
+			var rootURL = '//api.nytimes.com/svc/movies/v2/reviews/search';
 			
 			//ajax call to build list of movie titles
 			$.ajax({
