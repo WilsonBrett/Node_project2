@@ -42,5 +42,10 @@ $(function() {
 			err.text("Please enter a valid search criteria.");
 			err.css('visibility','visible');
 		}
+
+		//new user registration cancel button
+		$('#cancel_user_btn').click(function(evt){
+			evt.preventDefault();
+		});
 	});
 });	

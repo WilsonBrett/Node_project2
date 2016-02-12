@@ -1,11 +1,10 @@
 <% include ./partials/header %>
 
 	<section class="section_back">
-		<form class="form" id="login_form" action="" method="" name="login_form">
+		<form class="form" id="login_form" action="/users" method="post" name="login_form">
 			<h2>Please Login or Register</h2>
 			<input type="text" placeholder="Enter your email" name="email" id="email">
-			<input type="text" placeholder="Enter your password" name="password" id="password">
-			<!--<a href="/movies" id="login_link">Login</a>-->
+			<input type="password" placeholder="Enter your password" name="password" id="password">
 			<input id="login_btn" type='submit' value="Login">
 		</form>
 
