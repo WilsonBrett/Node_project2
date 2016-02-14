@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/user.js');
+var User = require('../models/user');
 
 //3
 router.get('/users/new', function(req, res, next) {
@@ -36,7 +36,7 @@ router.post('/users/new', function(req, res, next) {
 						throw err;
 					}
 
-					res.render('movies', {email: new_email});
+					res.redirect('/movies');
 				});
 			} else if(result.email === new_email) {
 				res.render('new_user', {msg: 'Email already on file. Click Cancel.'});
