@@ -25,13 +25,13 @@ router.post('/', function(req, res, next) {
 				throw err;
 			}
 			
-			if (result === null) {
-				res.render('index', { msg : 'Email not found.  Please register or try again.', val: null});
+			if (!result) {
+				res.render('index', { msg : 'Email or password is incorrect.  Please register or try again.', val: null});
 			} else {//email found - check password.
 				if (result.password === login_password) {//successful login
 					res.redirect('/movies');
 				} else {
-					res.render('index', { msg : 'Password is incorrect.  Please try again.', val: login_email });
+					res.render('index', { msg : 'Email or password is incorrect.  Please register or try again.', val: login_email });
 				}
 			}	
 		}); 
