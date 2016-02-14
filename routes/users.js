@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session');
 var router = express.Router();
 var User = require('../models/user');
 
@@ -35,7 +36,7 @@ router.post('/users/new', function(req, res, next) {
 						console.log(err);
 						throw err;
 					}
-
+					//req.session.user = result;
 					res.redirect('/movies');
 				});
 			} else if(result.email === new_email) {

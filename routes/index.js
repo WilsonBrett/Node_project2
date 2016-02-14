@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session');
 var router = express.Router();
 var User = require('../models/user');
 
@@ -29,6 +30,7 @@ router.post('/', function(req, res, next) {
 				res.render('index', { msg : 'Email or password is incorrect.  Please register or try again.', val: null});
 			} else {//email found - check password.
 				if (result.password === login_password) {//successful login
+					req.session.user = result;
 					res.redirect('/movies');
 				} else {
 					res.render('index', { msg : 'Email or password is incorrect.  Please register or try again.', val: login_email });
