@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session');
 var router = express.Router();
 var User = require('../models/user');
 
@@ -14,9 +15,9 @@ router.post('/users/new', function(req, res, next) {
 	var new_password = req.body.password;
 
 	if(new_email === null || new_email === "" || new_email === " ") {
-		alert('please enter a valid email');
+		res.send('Houstin we have an empty email');
 	} else if(new_password === null || new_password === "" || new_password === " ") {
-		alert('please enter a valid password');
+		res.send('Houstin we have an empty password');
 	} else {
 		User.findOne({'email': new_email}, 'email password', function(err, result) {
 			if (err) {
@@ -24,7 +25,7 @@ router.post('/users/new', function(req, res, next) {
 				throw err;
 			}
 
-			if(result === null) {
+			if(!result) {
 				var newUser = new User({
 					email: new_email,
 					password: new_password
@@ -34,12 +35,13 @@ router.post('/users/new', function(req, res, next) {
 					if (err) {
 						console.log(err);
 						throw err;
+						//research err.code 11000
 					}
-
+					//res.set-cookie: 'session=useremail'
 					res.redirect('/movies');
 				});
 			} else if(result.email === new_email) {
-				res.render('new_user', {msg: 'Email already on file. Click Cancel.'});
+				res.render('new_user', {msg: 'Email taken. Click Cancel.'});
 			}
 
 		});
