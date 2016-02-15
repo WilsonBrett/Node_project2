@@ -2,10 +2,7 @@
 <section class="code_back">
 	<form class="form" id="movie_search_frm" method="" action="">
 		<h2>Please search for a movie: </h2>
-
-		<% if (email) { %>
-			<p class="notes"><%= email %></p>
-		<% } %>
+		<p class="notes"><%= user.email %></p>
 
 		<input type="text" name="keyword" id="keyword_box" placeholder="Enter a search term"  required>
 		<input type="submit" value="Submit">

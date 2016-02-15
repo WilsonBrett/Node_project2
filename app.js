@@ -28,28 +28,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect(process.env.DB_CONN_MOVIESDB);
 
-app.use(routes);
-app.use(users);
-app.use(movies);
-
+//cookie parser, express-session, and router have to be used in that order.
 app.use(session({
-  secret: 'brett',
-  //lastpage: '',
+  name: 'session', 
+  secret: 'randomestring',
+  duration: 30 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000,
   resave: true,
   saveUninitialized: true
 }));
 
-/*
-app.use(session({
-  // use UUIDs for session IDs
-  genid: function(req) {
-    return genuuid();}, 
-  secret: 'brett',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { secure: false }
-}));
-*/
+app.use(routes);
+app.use(users);
+app.use(movies);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -57,15 +48,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
-//cookie handler
-//browser sends http request and server doesn't know if it has a cookie with the request
-	//app.js tests for the presence of the cookie
-		//if the cookie is found
-		//else if the cookie isn't found
-
-
-// error handlers
 
 // development error handler
 // will print stacktrace
