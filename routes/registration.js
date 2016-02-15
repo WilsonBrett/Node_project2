@@ -4,12 +4,12 @@ var router = express.Router();
 var User = require('../models/user');
 
 //3
-router.get('/users/new', function(req, res, next) {
-	res.render('new_user', {msg: null});
+router.get('/registration', function(req, res, next) {
+	res.render('registration', {msg: null});
 });
 
 //4
-router.post('/users/new', function(req, res, next) {
+router.post('/registration', function(req, res, next) {
 	//if field values are not null, aren't spaces, and at least a certain length, create the user record
 	var new_email = req.body.email;
 	var new_password = req.body.password;
@@ -37,11 +37,11 @@ router.post('/users/new', function(req, res, next) {
 						throw err;
 						//research err.code 11000
 					}
-					//res.set-cookie: 'session=useremail'
+					//set cookie or session so do not redirect to movies without a session
 					res.redirect('/movies');
 				});
 			} else if(result.email === new_email) {
-				res.render('new_user', {msg: 'Email taken. Click Cancel.'});
+				res.render('registration', {msg: 'Email taken. Click Cancel.'});
 			}
 
 		});

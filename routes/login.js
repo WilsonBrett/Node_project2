@@ -5,15 +5,15 @@ var User = require('../models/user');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
+	
   //console.log(req.session);
   //console.log('--------------------');
   //console.log(req.cookies); //cookie parser should populate this from the headers
-  res.render('index', {msg: null});
+  res.render('login', {msg: null});
 });
 
 //2
-router.post('/index', function(req, res, next) {
+router.post('/', function(req, res, next) {
 	var login_email = req.body.email;
 	var login_password = req.body.password;
 
@@ -29,15 +29,14 @@ router.post('/index', function(req, res, next) {
 				//research err.code of 11000
 			}
 			if (!result) {
-				res.render('index', { msg : 'Email or password is incorrect.  Please register or try again.'});
+				res.render('login', { msg : 'Email or password is incorrect.  Please register or try again.'});
 			} else {//email found - check password.
 				if (result.password === login_password) {//successful login
-					console.log('------------------');
-					req.session.user = result; //set-cookie: session='bfbfoulhbfou' email password goes into header of the response.
-					console.log(req.session);
+					req.session.user = result; //session and cookie are set, response header populated.
+					res.locals.user = result;
 					res.redirect('/movies');
 				} else {
-					res.render('index', { msg : 'Email or password is incorrect.  Please register or try again.'});
+					res.render('login', { msg : 'Email or password is incorrect.  Please register or try again.'});
 				}
 			}	
 		}); 

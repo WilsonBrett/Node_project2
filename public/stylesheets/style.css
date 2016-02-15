@@ -8,12 +8,13 @@ body {
 header {
 	background-color: rgb(50,50,50);
 	text-align: center;
-	padding: 2rem 2rem 0;
+	padding: 1rem 1rem 0;
 	font-variant: small-caps;
 }
 h1 {
 	color: red;
 	font-size: 3rem;
+	clear: right;
 }
 nav {
 	background-color: rgb(50,50,50);
@@ -21,16 +22,16 @@ nav {
 	margin: 0 auto;
 }
 a {
+	color: yellow;
 	text-decoration: none;
 }
+a:hover {
+	color: red;
+}
 nav a {
-	color: yellow;
 	padding: .5rem;
 	font-size: 1.2rem;
 	display: inline-block;
-}
-nav a:hover {
-	background-color: red;
 }
 nav a + a {
 	margin-left: 2rem;
@@ -54,16 +55,15 @@ section {
 .section_back {
 	background-image: url("../images/stars.jpg");
 	background-size: cover;
-	background-position: center center;
+	background-position: center top;
 	background-repeat: no-repeat;
 	padding: 3rem;
 	margin: 0 auto;
 }
 .code_back {
 	background-image: url("../images/matrix.jpg");
-	background-size: cover;
-	background-position: center center;
-	background-repeat: no-repeat;
+	background-position: center top;
+	background-repeat: repeat;
 	padding: 3rem;
 	margin: 0 auto;
 }
@@ -168,7 +168,11 @@ div#movie_details_head p {
 div#movie_details_head p.ital {
 	font-style: italic;
 }
-
+#portfolio {
+	float: right;
+	padding: .5rem .25rem;
+	font-size: 1.2rem;
+}
 .wrapper {
 	max-width: 1200px;
 	width: 80%;

@@ -15,7 +15,7 @@ router.get('/movies', function(req, res, next) {
   				res.locals.user = result;
   				res.render('movies');
   			}
-		});
+  		});
   } else {
   	//req.session.reset();
   	res.redirect('/');
