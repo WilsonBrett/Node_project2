@@ -2,8 +2,9 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+//don't need cookie parser in newest version of express-sessions
+var cookieParser = require('cookie-parser'); //looks at the headers to parse the cookies out of the transaction
+var bodyParser = require('body-parser'); //express middleware that allows post, and allows us to access req.body
 var mongoose = require('mongoose');
 var session = require('express-session');
 
@@ -31,12 +32,38 @@ app.use(routes);
 app.use(users);
 app.use(movies);
 
+app.use(session({
+  secret: 'brett',
+  //lastpage: '',
+  resave: true,
+  saveUninitialized: true
+}));
+
+/*
+app.use(session({
+  // use UUIDs for session IDs
+  genid: function(req) {
+    return genuuid();}, 
+  secret: 'brett',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false }
+}));
+*/
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
+
+//cookie handler
+//browser sends http request and server doesn't know if it has a cookie with the request
+	//app.js tests for the presence of the cookie
+		//if the cookie is found
+		//else if the cookie isn't found
+
 
 // error handlers
 
