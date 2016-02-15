@@ -1,6 +1,6 @@
 <% include ./partials/header %>
 
-	<section class="section_back">
+	<section class="user_background">
 		<form class="form" id="login_form" action="/" method="post" name="login_form">
 			<h2>Please Login or Register</h2>
 			
@@ -9,12 +9,11 @@
 			<% } %>
 
 			<input type="text" placeholder="Enter your email" name="email" id="email" required>
-				<!--<% if (val) { %> value="'" + <%= val %> + "'" <% } %>-->  
 			<input type="password" placeholder="Enter your password" name="password" id="password" required>
 			<input id="login_btn" type='submit' value="Login">
 		</form>
 
-		<a href="/users/new"><button id="register_btn">Register</button></a>
+		<a href="/registration"><button id="register_btn">Register</button></a>
 	</section>
 
 <% include ./partials/footer %>
