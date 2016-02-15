@@ -6,7 +6,7 @@ var User = require('../models/user');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	
-  //console.log(req.session);
+  console.log(req.session);
   //console.log('--------------------');
   //console.log(req.cookies); //cookie parser should populate this from the headers
   res.render('login', {msg: null});
@@ -33,7 +33,6 @@ router.post('/', function(req, res, next) {
 			} else {//email found - check password.
 				if (result.password === login_password) {//successful login
 					req.session.user = result; //session and cookie are set, response header populated.
-					res.locals.user = result;
 					res.redirect('/movies');
 				} else {
 					res.render('login', { msg : 'Email or password is incorrect.  Please register or try again.'});
@@ -41,6 +40,11 @@ router.post('/', function(req, res, next) {
 			}	
 		}); 
 	}
+});
+
+router.get('/logout', function(req, res){
+	req.session.destroy();
+	res.redirect('/');
 });
 
 

@@ -19,7 +19,7 @@ router.post('/registration', function(req, res, next) {
 	} else if(new_password === null || new_password === "" || new_password === " ") {
 		res.send('Houstin we have an empty password');
 	} else {
-		User.findOne({'email': new_email}, 'email password', function(err, result) {
+		User.findOne({'email': new_email}, function(err, result) {
 			if (err) {
 				console.log(err);
 				throw err;
@@ -30,6 +30,8 @@ router.post('/registration', function(req, res, next) {
 					email: new_email,
 					password: new_password
 				});
+
+				req.session.user = newUser;
 
 				newUser.save(function(err) {
 					if (err) {

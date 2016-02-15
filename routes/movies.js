@@ -9,15 +9,14 @@ router.get('/movies', function(req, res, next) {
   if(req.session && req.session.user) {
   		User.findOne({'email':req.session.user.email}, function(err,result){
   			if(!result) {
-  				req.session.reset();
+  				req.session.destroy();
   				res.redirect('/');
-  			} else {
+  			} else {//set the locals variable so ejs can put the users email on the page.
   				res.locals.user = result;
   				res.render('movies');
   			}
   		});
   } else {
-  	//req.session.reset();
   	res.redirect('/');
   }
 });
