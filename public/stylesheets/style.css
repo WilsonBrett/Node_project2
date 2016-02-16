@@ -171,7 +171,12 @@ div#movie_details_head p {
 div#movie_details_head p.ital {
 	font-style: italic;
 }
-
+ul {
+	color: white;
+	list-style-type: none;
+	line-height: 2.25rem;
+	font-size: 1.25rem;
+}
 .wrapper {
 	max-width: 1200px;
 	width: 80%;

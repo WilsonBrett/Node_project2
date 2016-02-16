@@ -4,7 +4,21 @@
 			<div class="wrapper">
 				<p class="notes"><%= user.email %></p>
 
-				<p><%= my_object.display_title  %></p>
+				<h2>
+					<% if(my_object.hasOwnProperty('display_title')) { %>
+						<%= my_object.display_title %>
+						<%} else { %>
+					       <%= '-Movie title-' %>
+					   <% } %>
+				</h2>
+
+				<ul>
+					<% for (var key in my_object) { %>
+						<% if(key == 'display_title') { continue } %>
+						<li><%= key.toUpperCase() + ': ' + my_object[key] %></li>
+					<% } %>
+				</ul>
+
 
 			</div>
 		</div>

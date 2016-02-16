@@ -46,7 +46,7 @@ router.get('/movies/:id', function(req, res, next) {
 					var keys = ['display_title','mpaa_rating','opening_date','byline','headline','capsule_review','summary_short'];
 					var my_obj = {};
 					for(i=0; i<keys.length; i++) {
-						if(movie.results[0][keys[i]]) { my_obj[keys[i]] = movie.results[0][keys[i]]}					   
+						if(movie.results[0][keys[i]]) { my_obj[keys[i]] = movie.results[0][keys[i]] }					   
 					}//closes for loop
 					//res.send({'my_object':my_obj});
 					res.render('show_movie', {'my_object':my_obj});
