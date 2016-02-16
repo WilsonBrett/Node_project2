@@ -1,11 +1,10 @@
 <% include ./partials/header %>
-<section class="movies_background">
-	<form class="form" id="movie_search_frm" method="" action="">
-
+<section class="background" id="movies_background">
+	<form id="movie_search_frm" method="" action="">
 		<h2>Please search for a movie: </h2>
 		<p class="notes"><%= user.email %></p>
 		<input type="text" name="keyword" id="keyword_box" placeholder="Enter a search term"  required>
-		<input type="submit" value="Submit">
+		<input id="search_btn" type="submit" value="Search">
 	</form>
 	<div id="movie_results_box" name="movie_results">
 		<h2>Results</h2>

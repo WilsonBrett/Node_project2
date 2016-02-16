@@ -1,8 +1,8 @@
 <% include ./partials/header %>
 
-	<section class="user_background">
-		<form class="form" id="login_form" action="/" method="post" name="login_form">
-			<h2>Please Login or Register</h2>
+	<section class= "background" id="user_background">
+		<form id="login_form" action="/" method="post" name="login_form">
+			<h2>Please Login</h2>
 			
 			<% if (msg) { %>
 				<p class="notes"><%= msg %></p>
@@ -10,10 +10,11 @@
 
 			<input type="text" placeholder="Enter your email" name="email" id="email" required>
 			<input type="password" placeholder="Enter your password" name="password" id="password" required>
-			<input id="login_btn" type='submit' value="Login">
+			<div class="btn_group">
+				<input class="primary_btn" type='submit' value="Login">
+				<a class="secondary_btn" href="/register">Register</a>
+			</div>
 		</form>
-
-		<a href="/registration"><button id="register_btn">Register</button></a>
 	</section>
 
 <% include ./partials/footer %>

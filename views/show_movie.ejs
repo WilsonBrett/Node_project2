@@ -1,14 +1,12 @@
 <% include ./partials/header %>
-	<section class="movies_background">
+	<section class="background" id="movies_background">
 		<div id="movie_details_head" class="wrapper">
 			<div class="wrapper">
 				<p class="notes"><%= user.email %></p>
-				<h2 id="movie_title"><%= title + ' - ' + rating %></h2>
-				<p>Released<%= ' ' + opened %></p>
-				<p class="ital"><%= headline %></p>
-				<p class="ital"><%= summary + ' - ' + hl_auth %></p>
-				<p class="ital"><%= capsule %></p>
-				<p><%= copyright %></p>
+
+				<p><%= movie.results[0].display_title %></p>				
+
+
 			</div>
 		</div>
 	</section>

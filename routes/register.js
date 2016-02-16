@@ -4,12 +4,12 @@ var router = express.Router();
 var User = require('../models/user');
 
 //3
-router.get('/registration', function(req, res, next) {
-	res.render('registration', {msg: null});
+router.get('/register', function(req, res, next) {
+	res.render('register', {msg: null});
 });
 
 //4
-router.post('/registration', function(req, res, next) {
+router.post('/register', function(req, res, next) {
 	//if field values are not null, aren't spaces, and at least a certain length, create the user record
 	var new_email = req.body.email;
 	var new_password = req.body.password;
@@ -43,12 +43,10 @@ router.post('/registration', function(req, res, next) {
 					res.redirect('/movies');
 				});
 			} else if(result.email === new_email) {
-				res.render('registration', {msg: 'Email taken. Click Cancel.'});
+				res.render('register', {msg: 'Email taken. Click Cancel.'});
 			}
-
 		});
 	}
-	
 	//res.render('movies', {email: new_email });
 });
 

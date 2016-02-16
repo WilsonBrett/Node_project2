@@ -8,13 +8,19 @@ body {
 header {
 	background-color: rgb(50,50,50);
 	text-align: center;
-	padding: 1rem 1rem 0;
+	padding: 2rem 1rem 0;
 	font-variant: small-caps;
+}
+footer {
+	padding: 3rem;
+	background-color: rgb(50,50,50);
+	text-align: center;
+	color: white;
+	font-size: 1.5rem;
 }
 h1 {
 	color: red;
 	font-size: 3rem;
-	clear: right;
 }
 nav {
 	background-color: rgb(50,50,50);
@@ -24,13 +30,28 @@ nav {
 a {
 	color: yellow;
 	text-decoration: none;
+	font-size: 1.2rem;
 }
 a:hover {
 	color: red;
 }
+a.secondary_btn {
+	padding: .5rem 1rem;
+	font-size: 1.75rem;
+	color: white;
+	margin-left: 1rem;
+}
+a.secondary_btn:hover {
+	color: red;
+}
+a#portfolio {
+	position: absolute;
+	top: 0;
+	left: 10px;
+	padding: .5rem .25rem;
+}
 nav a {
 	padding: .5rem;
-	font-size: 1.2rem;
 	display: inline-block;
 }
 nav a + a {
@@ -42,89 +63,71 @@ nav a + a {
 	text-align: center;
 	font-size: 1.5rem;
 	font-weight: 300;
-}	
-footer {
-	padding: 3rem;
-	background-color: rgb(50,50,50);
-	text-align: center;
-	color: white;
-	font-size: 1.5rem;
 }
-section {
+section.background {
 	height: 100%;
+	padding: 3rem;
+	margin: 0 auto;
+	background-position: center top;
 }
-.user_background {
+section#user_background {
 	background-image: url("../images/stars.jpg");
 	background-size: cover;
-	background-position: center top;
 	background-repeat: no-repeat;
-	padding: 3rem;
-	margin: 0 auto;
 }
-.movies_background {
+section#movies_background {
 	background-image: url("../images/matrix.jpg");
-	background-position: center top;
 	background-repeat: repeat;
-	padding: 3rem;
-	margin: 0 auto;
 }
-.form {
-	background-color: rgba(50,50,50,.85);
+form {
+	background-color: rgba(50,50,50,.9);
 	margin: 0 auto;
 	width: 50%;
 	padding: 2rem;
 	border-radius: 5px;
 }
-.form h2 {
-	text-align: center;
-	padding: 1rem;
-	background-color: lightgrey;
-	width: 80%;
-	margin: 0 auto;
-	font-size: 2rem;
-	border-radius: 5px;
-}
-.form input, #register_btn {
-	padding: .5rem 1rem;
-	font-size: 1.75rem;
-	display: block;
-	margin: 2rem auto 0;
-	border-radius: 5px;
-	text-align: center;
-}
-#user_form div {
-	margin: 0 auto;
-	text-align: center;
-}
-#user_form input[type='submit'] {
-	display: inline;
-}
-a#cancel_reg {
-	padding: .5rem 1rem;
-	font-size: 1.75rem;
-	display: inline;
-	margin: 2rem;
-	text-align: center;
-	text-decoration: none;
+h2 {
 	color: white;
+	text-align: center;
+	width: 80%;
+	margin: 0 auto 2rem;
+	font-size: 1.75rem;
+	border-radius: 5px;
+	font-weight: thin;
 }
-a#cancel_reg:hover {
-	color: red;
+form input {
+	padding: .5rem 1rem;
+	font-size: 1.5rem;
+	display: block;
+	margin: 0 auto 1rem;
+	border-radius: 5px;
+	text-align: center;
+	width: 80%;
+}
+form input.primary_btn {
+	display: inline;
+	width: auto;
+	margin: 0;
+}
+form input.primary_btn:hover {
+	background-color: red;
+}
+form input#search_btn {
+	width: auto;
+	margin: 2rem auto 0;
+}
+form input#search_btn:hover {
+	background-color: red;
+}
+form div.btn_group {
+	margin: 2rem auto 0;
+	text-align: center;
 }
 div#movie_results_box {
 	background-color: rgba(50,50,50, 0.85);
 	margin: 1rem auto 0;
 	width: 50%;
 	padding: 2rem;
-	border-radius: 5px;
-}
-div#movie_results_box h2 {
-	text-align: center;
-	padding: 1rem;
-	background-color: lightgrey;
-	width: 80%;
-	margin: 0 auto 1.5rem;
-	font-size: 2rem;
 	border-radius: 5px;
 }
 div#movie_results_box div {
@@ -168,11 +171,7 @@ div#movie_details_head p {
 div#movie_details_head p.ital {
 	font-style: italic;
 }
-#portfolio {
-	float: right;
-	padding: .5rem .25rem;
-	font-size: 1.2rem;
-}
+
 .wrapper {
 	max-width: 1200px;
 	width: 80%;

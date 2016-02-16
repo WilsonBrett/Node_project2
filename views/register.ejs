@@ -1,6 +1,6 @@
 <% include ./partials/header %>
-<section class="user_background">
-	<form class="form" id="user_form" name="user_form" action="/registration" method="post">
+<section class= "background" id="user_background">
+	<form id="user_form" name="user_form" action="/registration" method="post">
 		<h2>New User Registration</h2>
 
 		<% if (msg) { %>
@@ -9,9 +9,9 @@
 
 		<input type="text" id="email_box" name="email" placeholder="Email" required>
 		<input type="password" id="password_box" name="password" placeholder="Password" required>
-		<div>
-			<input type="submit" id="submit_user_btn" name="submit_user" value="Submit" required>
-			<a href="/" id="cancel_reg">Cancel</a>
+		<div class="btn_group">
+			<input class="primary_btn" type="submit" value="Register" required>
+			<a class="secondary_btn" href="/">Cancel</a>
 		</div>
 	</form>
 </section>

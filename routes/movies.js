@@ -43,17 +43,17 @@ router.get('/movies/:id', function(req, res, next) {
 					headers: {encoding: 'utf8', 'Content-type': 'application/json'}
 				}, function(error, response, body) {
 					if (error) throw error;
-					console.log(response.statusCode);
+
 					var movie = JSON.parse(body);
-			
-					res.render('show_movie', { title: movie.results[0].display_title,
+					
+					res.render('show_movie', {'movie':movie /*{ title: movie.results[0].display_title,
 											   rating: movie.results[0].mpaa_rating,
 											   opened: movie.results[0].opening_date,
 											   hl_auth: movie.results[0].byline,
 											   headline: movie.results[0].headline,
 											   capsule: movie.results[0].capsule_review,
 											   summary: movie.results[0].summary_short,
-											   copyright: movie.copyright
+											   copyright: movie.copyright*/
 											   
 					});//closes res.render show movie
 				});//closes request
