@@ -2,13 +2,12 @@
 	<section class="background" id="movies_background">
 		<div id="movie_details_head" class="wrapper">
 			<div class="wrapper">
-				<p class="notes"><%= user.email %></p>
 
 				<h2>
 					<% if(my_object.hasOwnProperty('display_title')) { %>
 						<%= my_object.display_title %>
 						<%} else { %>
-					       <%= '-Movie title-' %>
+					       <%= 'Movie title n/a' %>
 					   <% } %>
 				</h2>
 

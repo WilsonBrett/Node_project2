@@ -50,6 +50,13 @@ a#portfolio {
 	left: 10px;
 	padding: .5rem .25rem;
 }
+p#username {
+	color: white;
+	position: absolute;
+	top: 0;
+	right: 10px;
+	padding: .5rem .25rem;
+}
 nav a {
 	padding: .5rem;
 	display: inline-block;

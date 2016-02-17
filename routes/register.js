@@ -5,7 +5,13 @@ var User = require('../models/user');
 
 //3
 router.get('/register', function(req, res, next) {
-	res.render('register', {msg: null});
+	if(req.session.user) {
+		req.session.destroy(function(err){
+			res.render('register', {msg: null, 'username': null});
+		});
+	} else {
+		res.render('register', {msg:null, 'username':null});
+	};
 });
 
 //4
@@ -31,19 +37,19 @@ router.post('/register', function(req, res, next) {
 					password: new_password
 				});
 
-				req.session.user = newUser;
-
 				newUser.save(function(err) {
 					if (err) {
 						console.log(err);
 						throw err;
 						//research err.code 11000
 					}
-					//set cookie or session so do not redirect to movies without a session
+					User.findOne({'email': new_email}, function(err, result) {
+						req.session.user = result;
+					});
 					res.redirect('/movies');
 				});
 			} else if(result.email === new_email) {
-				res.render('register', {msg: 'Email taken. Click Cancel.'});
+				res.render('register', {msg: 'Email taken. Click Cancel.', 'req':req});
 			}
 		});
 	}

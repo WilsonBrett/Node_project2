@@ -13,7 +13,7 @@ router.get('/movies', function(req, res, next) {
   				res.redirect('/');
   			} else {//set the locals variable so ejs can put the users email on the page.
   				res.locals.user = result;
-  				res.render('movies');
+  				res.render('movies', {'username': res.locals.user.email});
   			}
   		});
   } else {
@@ -49,7 +49,7 @@ router.get('/movies/:id', function(req, res, next) {
 						if(movie.results[0][keys[i]]) { my_obj[keys[i]] = movie.results[0][keys[i]] }					   
 					}//closes for loop
 					//res.send({'my_object':my_obj});
-					res.render('show_movie', {'my_object':my_obj});
+					res.render('show_movie', {'my_object':my_obj, 'username':res.locals.user.email});
 				});//closes request
 			}//closes if
 		});//closes query findOne
