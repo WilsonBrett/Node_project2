@@ -1,14 +1,24 @@
 <% include ./partials/header %>
-	<section class="movies_background">
+	<section class="background" id="movies_background">
 		<div id="movie_details_head" class="wrapper">
 			<div class="wrapper">
-				<p class="notes"><%= user.email %></p>
-				<h2 id="movie_title"><%= title + ' - ' + rating %></h2>
-				<p>Released<%= ' ' + opened %></p>
-				<p class="ital"><%= headline %></p>
-				<p class="ital"><%= summary + ' - ' + hl_auth %></p>
-				<p class="ital"><%= capsule %></p>
-				<p><%= copyright %></p>
+
+				<h2>
+					<% if(my_object.hasOwnProperty('display_title')) { %>
+						<%= my_object.display_title %>
+						<%} else { %>
+					       <%= 'Movie title n/a' %>
+					   <% } %>
+				</h2>
+
+				<ul>
+					<% for (var key in my_object) { %>
+						<% if(key == 'display_title') { continue } %>
+						<li><%= key.toUpperCase() + ': ' + my_object[key] %></li>
+					<% } %>
+				</ul>
+
+
 			</div>
 		</div>
 	</section>

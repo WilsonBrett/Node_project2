@@ -13,7 +13,7 @@ router.get('/movies', function(req, res, next) {
   				res.redirect('/');
   			} else {//set the locals variable so ejs can put the users email on the page.
   				res.locals.user = result;
-  				res.render('movies');
+  				res.render('movies', {'username': res.locals.user.email});
   			}
   		});
   } else {
@@ -23,11 +23,10 @@ router.get('/movies', function(req, res, next) {
 
 //6)
 router.get('/movies/:id', function(req, res, next) {
-
 	if(req.session && req.session.user) {
   		User.findOne({'email':req.session.user.email}, function(err,result){
   			if(!result) {
-  				req.session.reset();
+  				req.session.destroy();
   				res.redirect('/');
   			} else {
   				//set locals variable and make serverside http request to nyt api
@@ -43,22 +42,17 @@ router.get('/movies/:id', function(req, res, next) {
 					headers: {encoding: 'utf8', 'Content-type': 'application/json'}
 				}, function(error, response, body) {
 					if (error) throw error;
-					console.log(response.statusCode);
 					var movie = JSON.parse(body);
-			
-					res.render('show_movie', { title: movie.results[0].display_title,
-											   rating: movie.results[0].mpaa_rating,
-											   opened: movie.results[0].opening_date,
-											   hl_auth: movie.results[0].byline,
-											   headline: movie.results[0].headline,
-											   capsule: movie.results[0].capsule_review,
-											   summary: movie.results[0].summary_short,
-											   copyright: movie.copyright
-											   
-					});//closes res.render show movie
+					var keys = ['display_title','mpaa_rating','opening_date','byline','headline','capsule_review','summary_short'];
+					var my_obj = {};
+					for(i=0; i<keys.length; i++) {
+						if(movie.results[0][keys[i]]) { my_obj[keys[i]] = movie.results[0][keys[i]] }					   
+					}//closes for loop
+					//res.send({'my_object':my_obj});
+					res.render('show_movie', {'my_object':my_obj, 'username':res.locals.user.email});
 				});//closes request
-  			}
-		});
+			}//closes if
+		});//closes query findOne
   	} else {
   		res.redirect('/');
   	}
