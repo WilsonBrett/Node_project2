@@ -49,7 +49,7 @@ router.post('/register', function(req, res, next) {
 					res.redirect('/movies');
 				});
 			} else if(result.email === new_email) {
-				res.render('register', {msg: 'Email taken. Click Cancel.', 'req':req});
+				res.render('register', {msg: 'Email taken. Click Cancel.', 'username':null});
 			}
 		});
 	}

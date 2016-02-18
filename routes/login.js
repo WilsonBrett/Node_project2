@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
 		res.locals.user = req.session.user;
 		res.render('login', {msg: null, 'username':res.locals.user.email});
 	}	else {
-		res.render('login', {msg: null, 'username':null})
+			res.render('login', {msg: null, 'username':null})
 	}
 });
 
