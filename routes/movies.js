@@ -43,6 +43,7 @@ router.get('/movies/:id', function(req, res, next) {
 				}, function(error, response, body) {
 					if (error) throw error;
 					var movie = JSON.parse(body);
+					console.log(movie);
 					var keys = ['display_title','mpaa_rating','opening_date','byline','headline','capsule_review','summary_short'];
 					var my_obj = {};
 					for(i=0; i<keys.length; i++) {

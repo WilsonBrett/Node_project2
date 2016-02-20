@@ -12,16 +12,20 @@ $(function() {
 		if(!(keyword===null) && !(keyword===" ") && !(keyword==="")) {
 			err.css('visibility','hidden');
 			keyword = encodeURIComponent(keyword);
-			keyword = "'" + keyword + "'"; //need double quotes to avoid nyt OR query
+			//console.log(keyword);
+			//keyword = keyword.replace(/%20/g,"+");
+			//console.log(keyword);
+
 			var rootURL = '//api.nytimes.com/svc/movies/v2/reviews/search';
 			
 			//ajax call to build list of movie titles
 			$.ajax({
 				method: "GET",
 				url: rootURL,
-				data: {"query": keyword, "api-key": api_key}
+				data: {"query": keyword, order:'by-title', "api-key": api_key}
 				
 			}).done(function(data){
+				
 				movie_container.empty();
 				movie_container.append("<h2>Results: </h2>");
 				for(i=0; i < data.results.length; i++) {
