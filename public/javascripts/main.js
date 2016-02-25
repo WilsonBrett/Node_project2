@@ -49,9 +49,12 @@ $(function() {
 	//add focus effect to email input login field
 	$('#email').focus(inputEnter);
 	$('#password').focus(inputEnter);
+	$('#keyword_box').focus(inputEnter);
+
 	$('#email').blur(inputExit);
 	$('#password').blur(inputExit);
-
+	$('#keyword_box').blur(inputExit);
+	
 	function inputEnter() {
 		$(this).css('border','2px solid red');
 	}
