@@ -1,7 +1,7 @@
 $(function() {
-    //alert("Hello World");
+	//to hide this make the ajax call to my server first and then make a ss call to nyt
 	var api_key = '056315a59749a59d691a6476f262a589:3:74337495';
-
+	
 	//movie search page functions
 	$('#movie_search_frm').submit(function(event) {
 		event.preventDefault();
@@ -12,9 +12,7 @@ $(function() {
 		if(!(keyword===null) && !(keyword===" ") && !(keyword==="")) {
 			err.css('visibility','hidden');
 			keyword = encodeURIComponent(keyword);
-			//console.log(keyword);
 			//keyword = keyword.replace(/%20/g,"+");
-			//console.log(keyword);
 
 			var rootURL = '//api.nytimes.com/svc/movies/v2/reviews/search';
 			
@@ -60,6 +58,4 @@ $(function() {
 	function inputBlur() {
 		$(this).css('border','2px solid white');
 	}
-
-
 });	
