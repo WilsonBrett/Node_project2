@@ -46,24 +46,18 @@ $(function() {
 		});
 	});
 
-	//add focus/blur effect to email input login field
-	$('#email').focus(inputEnter);
-	$('#password').focus(inputEnter);
-	$('#keyword_box').focus(inputEnter);
-	$('#email_box').focus(inputEnter); //registration email
-	$('#password_box').focus(inputEnter); //registration password
-
-	$('#email').blur(inputExit);
-	$('#password').blur(inputExit);
-	$('#keyword_box').blur(inputExit);
-	$('#email_box').blur(inputExit); 
-	$('#password_box').blur(inputExit);
+	//add focus/blur css to input boxes
+	var inputElems = ['#email','#password','#keyword_box','#email_box','#password_box'];
+	$.each(inputElems, function(index, val){
+		$(val).focus(inputFocus);
+		$(val).blur(inputBlur);
+	});
 	
-	function inputEnter() {
+	function inputFocus() {
 		$(this).css('border','2px solid red');
 	}
 
-	function inputExit() {
+	function inputBlur() {
 		$(this).css('border','2px solid white');
 	}
 
