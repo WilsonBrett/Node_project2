@@ -45,4 +45,20 @@ $(function() {
 			evt.preventDefault();
 		});
 	});
+
+	//add focus effect to email input login field
+	$('#email').focus(inputEnter);
+	$('#password').focus(inputEnter);
+	$('#email').blur(inputExit);
+	$('#password').blur(inputExit);
+
+	function inputEnter() {
+		$(this).css('border','2px solid red');
+	}
+
+	function inputExit() {
+		$(this).css('border','2px solid white');
+	}
+
+
 });	

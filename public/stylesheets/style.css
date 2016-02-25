@@ -110,6 +110,7 @@ form input {
 	border-radius: 5px;
 	text-align: center;
 	width: 80%;
+	border: 2px solid white;
 }
 form input.primary_btn {
 	display: inline;
