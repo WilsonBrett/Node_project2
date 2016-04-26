@@ -6,30 +6,31 @@ $(function() {
 	$('#movie_search_frm').submit(function(event) {
 		event.preventDefault();
 		var keyword = $('#keyword_box').val();
+		keyword = keyword.trim();
+		keyword = encodeURIComponent(keyword);
+		//console.log(keyword);
 		var err = $('#error_msg');
 		var movie_container = $('#movie_results_box');
 
 		if(!(keyword===null) && !(keyword===" ") && !(keyword==="")) {
 			err.css('visibility','hidden');
-			keyword = encodeURIComponent(keyword);
-
 			var rootURL = 'http://api.nytimes.com/svc/movies/v2/reviews/search.json';
 			
 			//ajax call to build list of movie titles
 			$.ajax({
 				method: "GET",
 				url: rootURL,
-				data: {"query": keyword, order:'by-title', "api-key": api_key}
+				data: {"query": keyword, "order":'by-title', "api-key": api_key}
 				
 			}).done(function(data){
 				movie_container.empty();
-				var titleStr = "<h2>Results: </h2>";
+				var titleStr = "<h2>NYT Results</h2>";
 				
 				for(i=0; i < data.results.length; i++) {
 					var title = data.results[i].display_title;
-					var titleEncode = encodeURIComponent(title);
+					//var titleEncode = encodeURI(title);
 					//console.log(title + " => " + titleEncode);
-					titleStr += "<div><a class='m_link' href='/movies/" + titleEncode + "'>" + title + "</a></div>";
+					titleStr += "<div><a class='m_link' href='/movies/" + title + "'>" + title + "</a></div>";
 				}
 				movie_container.append(titleStr);
 			});

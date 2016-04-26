@@ -32,27 +32,26 @@ router.get('/movies/:movTitle', function(req, res, next) {
   				//set locals variable and make serverside http request to nyt api
   				res.locals.user = result;
   				var title = req.params.movTitle;
-  				var titleEncode = encodeURIComponent(title);
+  				title = ("'" + title + "'");
   				var api_key = process.env.NYT_API_KEY;
-  				var nyt_uri = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json';
 
 				request({
 					method: 'GET',
-					uri: nyt_uri,
-					qs: {"display-title": titleEncode, 'api-key': api_key},
-					headers: {encoding: 'utf8', 'Content-type': 'application/json'}
+					uri: 'https://api.nytimes.com/svc/movies/v2/reviews/search.json',
+					qs: {'query':title,'api-key':api_key},
+					headers: {encoding: 'utf8', 'Content-type': 'application/JSON'}
 				}, function(error, response, body) {
-					if (error) throw error;
-					var movie = JSON.parse(body);
-					var keys = ['display_title','mpaa_rating','opening_date','byline','headline','capsule_review','summary_short'];
-					var my_obj = {};
-					for(i=0; i<keys.length; i++) {
-						if(movie.results[0][keys[i]]) { my_obj[keys[i]] = movie.results[0][keys[i]] }					   
-					}//closes for loop
-					res.render('show_movie', {'my_object':my_obj, 'username':res.locals.user.email});
-				});//closes request
-			}//closes if
-		});//closes query findOne
+						console.log("Response *****",response.request.uri.path,"Response *****")
+						var movie = JSON.parse(body);
+						var keys = ['display_title','mpaa_rating','opening_date','byline','headline','capsule_review','summary_short'];
+						var my_obj = {};
+						for(i=0; i<keys.length; i++) {
+							if(movie.results[0][keys[i]]) { my_obj[keys[i]] = movie.results[0][keys[i]] }					   
+						}
+						res.render('show_movie', {'my_object':my_obj, 'username':res.locals.user.email});
+				});
+			}
+		});
   	} else {
   		res.redirect('/');
   	}
