@@ -22,7 +22,8 @@ router.get('/movies', function(req, res, next) {
 });
 
 //6)
-router.get('/movies/:movTitle', function(req, res, next) {
+//router.get('/movies/:movTitle', function(req, res, next) {
+router.get('/movies/:id', function(req, res, next) {
 	if(req.session && req.session.user) {
   		User.findOne({'email':req.session.user.email}, function(err,result){
   			if(!result) {
@@ -31,22 +32,24 @@ router.get('/movies/:movTitle', function(req, res, next) {
   			} else {
   				//set locals variable and make serverside http request to nyt api
   				res.locals.user = result;
-  				var title = req.params.movTitle;
-  				title = ("'" + title + "'");
-  				var api_key = process.env.NYT_API_KEY;
+  				//var title = req.params.movTitle;
+          var id = req.params.id;
 
 				request({
 					method: 'GET',
-					uri: 'https://api.nytimes.com/svc/movies/v2/reviews/search.json',
-					qs: {'query':title,'api-key':api_key},
+					uri: 'http://omdbapi.com',
+					//qs: {'t':title, 'r':'json'},
+          qs: {'i':id},
 					headers: {encoding: 'utf8', 'Content-type': 'application/JSON'}
 				}, function(error, response, body) {
-						console.log("Response *****",response.request.uri.path,"Response *****")
+						console.log("Response *****",response.request.uri.path,"Response *****");
 						var movie = JSON.parse(body);
-						var keys = ['display_title','mpaa_rating','opening_date','byline','headline','capsule_review','summary_short'];
+            console.log(movie);
+
+						var keys = ['Title','Released','Rated','Genre','Plot'];
 						var my_obj = {};
 						for(i=0; i<keys.length; i++) {
-							if(movie.results[0][keys[i]]) { my_obj[keys[i]] = movie.results[0][keys[i]] }					   
+							if(movie[keys[i]]) { my_obj[keys[i]] = movie[keys[i]] }
 						}
 						res.render('show_movie', {'my_object':my_obj, 'username':res.locals.user.email});
 				});
@@ -56,5 +59,5 @@ router.get('/movies/:movTitle', function(req, res, next) {
   		res.redirect('/');
   	}
 });
-		
+
 module.exports = router;

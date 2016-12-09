@@ -4,8 +4,8 @@
 			<div class="wrapper">
 
 				<h2>
-					<% if(my_object.hasOwnProperty('display_title')) { %>
-						<%= my_object.display_title %>
+					<% if(my_object.hasOwnProperty('Title')) { %>
+						<%= my_object.Title %>
 						<%} else { %>
 					       <%= 'Movie title n/a' %>
 					   <% } %>
@@ -13,7 +13,7 @@
 
 				<ul>
 					<% for (var key in my_object) { %>
-						<% if(key == 'display_title') { continue } %>
+						<% if(key == 'Title') { continue } %>
 						<li><%= key.toUpperCase() + ': ' + my_object[key] %></li>
 					<% } %>
 				</ul>

@@ -18,7 +18,7 @@ $(function() {
 			$.ajax({
 				method: "GET",
 				url: rootURL,
-				data: {"s": keyword}
+				data: {"s": keyword, "type":"movie"}
 
 			}).done(function(data){
 				movie_container.empty();
@@ -26,7 +26,8 @@ $(function() {
 
 				for(i=0; i < data.Search.length; i++) {
 					var title = data.Search[i].Title;
-					titleStr += "<div><a class='m_link' href='/movies/" + title + "'>" + title + "</a></div>";
+          var id = data.Search[i].imdbID;
+					titleStr += "<div><a class='m_link' href='/movies/" + id + "'>" + title + "</a></div>";
 				}
 				movie_container.append(titleStr);
 			});
