@@ -1,7 +1,5 @@
 $(function() {
-	//to hide this make the ajax call to my server first and then make a ss call to nyt
-	var api_key = '056315a59749a59d691a6476f262a589:3:74337495';
-	
+
 	//movie search page functions
 	$('#movie_search_frm').submit(function(event) {
 		event.preventDefault();
@@ -14,22 +12,20 @@ $(function() {
 
 		if(!(keyword===null) && !(keyword===" ") && !(keyword==="")) {
 			err.css('visibility','hidden');
-			var rootURL = 'http://api.nytimes.com/svc/movies/v2/reviews/search.json';
-			
+			var rootURL = 'http://omdbapi.com';
+
 			//ajax call to build list of movie titles
 			$.ajax({
 				method: "GET",
 				url: rootURL,
-				data: {"query": keyword, "order":'by-title', "api-key": api_key}
-				
+				data: {"s": keyword}
+
 			}).done(function(data){
 				movie_container.empty();
-				var titleStr = "<h2>NYT Results</h2>";
-				
-				for(i=0; i < data.results.length; i++) {
-					var title = data.results[i].display_title;
-					//var titleEncode = encodeURI(title);
-					//console.log(title + " => " + titleEncode);
+				var titleStr = "<h2>OMDB Results</h2>";
+
+				for(i=0; i < data.Search.length; i++) {
+					var title = data.Search[i].Title;
 					titleStr += "<div><a class='m_link' href='/movies/" + title + "'>" + title + "</a></div>";
 				}
 				movie_container.append(titleStr);
@@ -53,7 +49,7 @@ $(function() {
 		$(val).focus(inputFocus);
 		$(val).blur(inputBlur);
 	});
-	
+
 	function inputFocus() {
 		$(this).css('border','2px solid red');
 	}
@@ -61,4 +57,4 @@ $(function() {
 	function inputBlur() {
 		$(this).css('border','2px solid white');
 	}
-});	
+});
